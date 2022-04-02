@@ -1,0 +1,6 @@
+CREATE TABLE "JOB.JobTypes" (
+"JOB.ID" Char(6),
+"JOB.Description" Varchar(50),
+"JOB.Grade" Char(1),
+"SKILL.Name" Char(6)
+);

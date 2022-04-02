@@ -1,0 +1,24 @@
+CREATE TABLE "JOB.JobTypes" (
+"JOB.ID" char(6),
+"JOB.Description" varchar(50),
+"JOB.Grade" char(1),
+"JOB.AverageSalary" float(6,2)
+);
+
+CREATE TABLE "EMP.Employees" (
+"EMP.ID" int,
+"EMP.Name" varchar(50),
+"EMP.Mobile" Int,
+"JOB.ID" char(6)
+);
+
+CREATE TABLE "SKILL.SkillTypes" (
+"SKILL.ID" char(6),
+"SKILL.Description" varchar(20)
+);
+
+CREATE TABLE "EMPSKILL.EmployeeSkills" (
+"EMP.ID" int,
+"SKILL.ID" char(6),
+"EMPSKILL.DateAttained" date
+);

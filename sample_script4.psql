@@ -1,0 +1,62 @@
+CREATE TABLE "HOSP.Hospitals" (
+  "HOSP.ID" char(6),
+  "HOSP.Name" varchar(30),
+  "HOSP.Address" varchar(50),
+  PRIMARY KEY ("HOSP.ID")
+);
+
+CREATE TABLE "SPEC.Specialties" (
+  "SPEC.ID" char(6),
+  "SPEC.Description" varchar(50),
+  PRIMARY KEY ("SPEC.ID")
+);
+
+CREATE TABLE "DOC.Doctors" (
+  "DOC.ID" char(6),
+  "DOC.Name" varchar(30),
+  "SPEC.ID" char(6),
+  "HOSP.ID" char(6),
+  PRIMARY KEY ("DOC.ID"),
+  CONSTRAINT "FK_DOC.Doctors.HOSP.ID"
+    FOREIGN KEY ("HOSP.ID")
+      REFERENCES "HOSP.Hospitals"("HOSP.ID"),
+  CONSTRAINT "FK_DOC.Doctors.SPEC.ID"
+    FOREIGN KEY ("SPEC.ID")
+      REFERENCES "SPEC.Specialties"("SPEC.ID")
+);
+
+CREATE TABLE "PAT.Patient" (
+  "PAT.ID" int,
+  "PAT.Name" varchar(50),
+  "PAT.Healthcard" varchar(9),
+  "DOC.ID" char(6),
+  PRIMARY KEY ("PAT.ID"),
+  CONSTRAINT "FK_PAT.Patient.DOC.ID"
+    FOREIGN KEY ("DOC.ID")
+      REFERENCES "DOC.Doctors"("DOC.ID")
+);
+
+CREATE TABLE "MORB.Morbidities" (
+  "MORB.ID" char(6),
+  "MORB.Description" varchar(20),
+  PRIMARY KEY ("MORB.ID")
+);
+
+CREATE TABLE "PATMORB.PatientConditions" (
+  "PAT.ID" int,
+  "MORB.ID" char(6),
+  "PATMORB.DateStarted" date,
+  "PATMORB.DateResolved" date,
+  "DOC.ID" char(6),
+  PRIMARY KEY ("PAT.ID", "MORB.ID"),
+  CONSTRAINT "FK_PATMORB.PatientConditions.PAT.ID"
+    FOREIGN KEY ("PAT.ID")
+      REFERENCES "PAT.Patient"("PAT.ID"),
+  CONSTRAINT "FK_PATMORB.PatientConditions.MORB.ID"
+    FOREIGN KEY ("MORB.ID")
+      REFERENCES "MORB.Morbidities"("MORB.ID"),
+  CONSTRAINT "FK_PATMORB.PatientConditions.DOC.ID"
+    FOREIGN KEY ("DOC.ID")
+      REFERENCES "DOC.Doctors"("DOC.ID")
+);
+
