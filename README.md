@@ -12,7 +12,7 @@ Step 3) pgAdmin will ask for your master password on open: this is set in the in
 
 ![image](https://user-images.githubusercontent.com/15320504/157739561-c974462c-ef3f-4c64-bcee-ae2b7eb86eaa.png)
 
-Step 4) Within the navigation panel on the left, click the arrow beside Servers. Now, you may be prompted to input a personal user password (although this wasn't necessarily the case for all users) 
+Step 4) Within the navigation panel on the left, click the arrow beside Servers. Now, you will be prompted to input a superuser password: this is also set in the installation
 
 ![image](https://user-images.githubusercontent.com/15320504/157739612-dfefd2a6-02ad-4743-a3ef-c209b51cc942.png)
 
